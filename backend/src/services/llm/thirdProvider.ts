@@ -2,24 +2,30 @@ import OpenAI from 'openai';
 import { LLMResponse, Provider, LLMStreamChunk } from './llmTypes';
 import { estimateTokens } from '../../utils/tokenUtils';
 
-export default class OpenAIProvider implements Provider {
-  name = 'openai';
+export default class MistralProvider implements Provider {
+  name = 'mistral';
   private client: OpenAI | null = null;
   public modelName: string;
 
-  constructor(modelName = 'gpt-4o-mini') {
-    const apiKey = process.env.OPENAI_API_KEY;
+  constructor(modelName = 'ministral-8b-latest') {
+    const apiKey = process.env.MISTRAL_API_KEY || process.env.OPENAI_API_KEY;
     this.modelName = modelName;
     if (apiKey) {
-      this.client = new OpenAI({ apiKey });
+      this.client = new OpenAI({
+        apiKey,
+        baseURL: 'https://api.mistral.ai/v1',
+      });
     }
   }
 
   private ensureClient() {
     if (!this.client) {
-      const key = process.env.OPENAI_API_KEY;
-      if (!key) throw new Error('OPENAI_API_KEY not set');
-      this.client = new OpenAI({ apiKey: key });
+      const key = process.env.MISTRAL_API_KEY || process.env.OPENAI_API_KEY;
+      if (!key) throw new Error('MISTRAL_API_KEY not configured');
+      this.client = new OpenAI({
+        apiKey: key,
+        baseURL: 'https://api.mistral.ai/v1',
+      });
     }
   }
 
@@ -32,12 +38,16 @@ export default class OpenAIProvider implements Provider {
     const content = completion.choices?.[0]?.message?.content ?? '';
     const inputTokens = completion.usage?.prompt_tokens ?? estimateTokens(prompt);
     const outputTokens = completion.usage?.completion_tokens ?? estimateTokens(content);
+    
+    // Mistral pricing approx: $0.10 per 1M input, $0.10 per 1M output
+    const estimatedCost = (inputTokens * 0.10 + outputTokens * 0.10) / 1_000_000;
+
     return {
       content,
       model: this.modelName,
       inputTokens,
       outputTokens,
-      estimatedCost: 0,
+      estimatedCost,
     };
   }
 
@@ -60,8 +70,8 @@ export default class OpenAIProvider implements Provider {
   async healthCheck(): Promise<boolean> {
     try {
       this.ensureClient();
-      await this.client!.models.list();
-      return true;
+      const res = await this.client!.models.list();
+      return !!res.data && res.data.length > 0;
     } catch {
       return false;
     }
@@ -71,3 +81,6 @@ export default class OpenAIProvider implements Provider {
     return estimateTokens(text);
   }
 }
+
+// Export as OpenAIProvider for compatibility
+export { MistralProvider as OpenAIProvider };

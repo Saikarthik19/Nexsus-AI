@@ -181,7 +181,7 @@ const CostTracking: React.FC = () => {
                   ${overview.totalCostUSD.toFixed(6)}
                 </div>
                 <p className="text-xs text-slate-400 mt-2">
-                  Aggregated across Google Gemini, Groq Cloud, and OpenAI calls.
+                  Aggregated across Google Gemini, Groq Cloud, and Mistral AI calls.
                 </p>
               </div>
               <div className="mt-4 pt-3 border-t border-slate-800 text-[11px] text-slate-500 font-mono">
@@ -306,10 +306,10 @@ const CostTracking: React.FC = () => {
 
                   <div className="p-3 bg-slate-900/60 rounded-xl border border-slate-800 flex items-center justify-between text-xs">
                     <div>
-                      <div className="font-semibold text-white">OpenAI GPT-4o-mini</div>
-                      <div className="text-[11px] text-slate-400">$0.15 / 1M in • $0.60 / 1M out</div>
+                      <div className="font-semibold text-white">Mistral AI (ministral-8b-latest)</div>
+                      <div className="text-[11px] text-slate-400">$0.10 / 1M in • $0.10 / 1M out</div>
                     </div>
-                    <span className="font-mono text-blue-300 font-semibold">Tier 3 Reasoning</span>
+                    <span className="font-mono text-amber-300 font-semibold">Tier 3 Reasoning</span>
                   </div>
                 </div>
               </div>

@@ -52,7 +52,7 @@ const AVAILABLE_MODELS = [
   { id: 'auto', name: 'Auto (Task-Aware Routing: Speed/Context/Cost)', provider: 'Router' },
   { id: 'gemini-3.5-flash-lite', name: 'Google Gemini 3.5 Flash Lite (Fast & Cheap)', provider: 'Gemini' },
   { id: 'qwen/qwen3.8-27b', name: 'Groq Cloud (Qwen 27B Fast Inference)', provider: 'Groq' },
-  { id: 'gpt-4o-mini', name: 'OpenAI GPT-4o-mini (Reasoning)', provider: 'OpenAI' },
+  { id: 'ministral-8b-latest', name: 'Mistral AI (Ministral 8B Reasoning & Analysis)', provider: 'Mistral' },
 ];
 
 const Chat: React.FC = () => {
@@ -373,9 +373,9 @@ const Chat: React.FC = () => {
                             <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-purple-900/50 text-purple-300 border border-purple-500/40 font-sans font-bold shadow-sm">
                               <Zap className="w-2.5 h-2.5 text-purple-400" /> Groq Cloud
                             </span>
-                          ) : (m.metadata?.provider === 'openai' || m.model.toLowerCase().includes('gpt')) ? (
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-900/50 text-emerald-300 border border-emerald-500/40 font-sans font-bold shadow-sm">
-                              <Cpu className="w-2.5 h-2.5 text-emerald-400" /> OpenAI
+                          ) : (m.metadata?.provider === 'mistral' || m.model.toLowerCase().includes('mistral') || m.metadata?.provider === 'openai' || m.model.toLowerCase().includes('gpt')) ? (
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-900/50 text-amber-300 border border-amber-500/40 font-sans font-bold shadow-sm">
+                              <Cpu className="w-2.5 h-2.5 text-amber-400" /> Mistral AI
                             </span>
                           ) : (
                             <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-900/50 text-blue-300 border border-blue-500/40 font-sans font-bold shadow-sm">

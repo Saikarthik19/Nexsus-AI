@@ -75,11 +75,11 @@ const Settings: React.FC = () => {
 
               <div className="p-4 bg-slate-900/60 rounded-xl border border-slate-800 flex items-center justify-between">
                 <div>
-                  <div className="font-semibold text-white">OpenAI</div>
-                  <div className="text-slate-400 text-[11px]">gpt-4o-mini, text-embedding-3-small</div>
+                  <div className="font-semibold text-white">Mistral AI</div>
+                  <div className="text-slate-400 text-[11px]">ministral-8b-latest, mistral-tiny, codestral-latest</div>
                 </div>
-                <span className="px-2.5 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-full font-semibold text-[10px]">
-                  FALLBACK ACTIVE
+                <span className="px-2.5 py-1 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full font-semibold text-[10px]">
+                  ACTIVE & CONNECTED
                 </span>
               </div>
             </div>

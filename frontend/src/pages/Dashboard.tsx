@@ -297,7 +297,7 @@ const Dashboard: React.FC = () => {
                   AI Provider Monitoring & Verified Connectivity
                 </h2>
                 <p className="text-xs text-slate-400">
-                  Live connection health checks and telemetry across Google Gemini, Groq, and OpenAI
+                  Live connection health checks and telemetry across Google Gemini, Groq, and Mistral AI
                 </p>
               </div>
               <Link

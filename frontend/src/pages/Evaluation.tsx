@@ -57,7 +57,7 @@ const SCENARIOS = [
   {
     id: 6,
     name: 'Multi-Model Disagreement Detection',
-    description: 'Compares factual extraction across distinct LLM providers (Gemini vs Groq/OpenAI) to flag divergence.',
+    description: 'Compares factual extraction across distinct LLM providers (Gemini vs Groq/Mistral) to flag divergence.',
   },
   {
     id: 7,

@@ -27,7 +27,7 @@ The platform provides a unified interface incorporating **dynamic multi-model ro
 NexusAI automatically classifies incoming tasks and dispatches prompts to the optimal LLM provider rather than relying on a single static model:
 * **Groq Cloud (`qwen/qwen3.8-27b`)**: Selected for technical code generation, bash scripting, and fast conversational interactions delivering sub-400ms ultra-low inference latency.
 * **Google Gemini (`gemini-3.5-flash-lite`)**: Selected for long-context synthesis, creative prose, and document intelligence leveraging its 1,000,000-token context window and cost efficiency.
-* **OpenAI (`gpt-4o-mini`)**: Selected for complex multi-step reasoning, architectural trade-offs, and symbolic logic.
+* **Mistral AI (`ministral-8b-latest`)**: Selected for complex multi-step reasoning, architectural trade-offs, and symbolic logic.
 * **Manual Override**: Users can pin any session or prompt to a specific provider model at any time.
 
 ### 2. 🛡️ Fault-Tolerant Resilience & Graceful Fallback
@@ -117,7 +117,7 @@ flowchart TD
 | **Fast Conversational** | Greetings, short Q&A, definitions, `< 150 tokens` | **Groq Cloud** | `qwen/qwen3.8-27b` | Sub-400ms ultra-low latency response | Gemini 3.5 Flash Lite |
 | **RAG Document Intelligence** | `useRAG: true`, document synthesis, policy audit | **Google Gemini** | `gemini-3.5-flash-lite` | 1,000,000 token context window, source citations | Groq Qwen 27B |
 | **Creative Writing** | Poetry, narrative, essay, storytelling, roleplay | **Google Gemini** | `gemini-3.5-flash-lite` | Multi-turn compositional natural language | Groq Qwen 27B |
-| **Complex Reasoning** | Architecture trade-offs, logic puzzles, proofs | **OpenAI** | `gpt-4o-mini` | Multi-step symbolic and analytical deduction | Groq / Gemini |
+| **Complex Reasoning** | Architecture trade-offs, logic puzzles, proofs | **Mistral AI** | `ministral-8b-latest` | Multi-step symbolic and analytical deduction | Groq / Gemini |
 
 ---
 
@@ -198,7 +198,7 @@ Nexsus-AI/
 * **AI Providers**:
   * Google Gemini API (`@google/generative-ai`)
   * Groq Cloud High-Speed Inference (`groq-sdk`)
-  * OpenAI REST API (`openai`)
+  * Mistral AI API (`mistral` / `openai` client)
 * **Vector & Document Processing**: `pdf-parse`, local embedding normalizers, vector cosine similarity calculators.
 
 ---
@@ -212,7 +212,7 @@ Nexsus-AI/
 * **API Keys**:
   * [Google AI Studio (Gemini)](https://aistudio.google.com/)
   * [Groq Cloud Console](https://console.groq.com/)
-  * [OpenAI Platform](https://platform.openai.com/) *(optional)*
+  * [Mistral AI Console](https://console.mistral.ai/)
 
 ---
 
@@ -240,7 +240,7 @@ MONGODB_URI=mongodb://localhost:27017/nexusai
 # Provider API Keys
 GEMINI_API_KEY=your_google_gemini_api_key
 GROQ_API_KEY=your_groq_cloud_api_key
-OPENAI_API_KEY=your_openai_api_key_optional
+MISTRAL_API_KEY=your_mistral_api_key
 ```
 
 Install backend dependencies and compile TypeScript:

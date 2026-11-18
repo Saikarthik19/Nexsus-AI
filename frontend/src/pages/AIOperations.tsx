@@ -234,7 +234,7 @@ const AIOperations: React.FC = () => {
                       <div>
                         <h3 className="text-sm font-semibold text-white">Dynamic Model Routing Stream</h3>
                         <p className="text-xs text-slate-400">
-                          Automated task-aware router decisions and fallback events across Gemini, Groq, and OpenAI
+                          Automated task-aware router decisions and fallback events across Gemini, Groq, and Mistral AI
                         </p>
                       </div>
                       <span className="text-xs text-indigo-400 bg-indigo-500/10 px-2.5 py-1 rounded-md border border-indigo-500/20">

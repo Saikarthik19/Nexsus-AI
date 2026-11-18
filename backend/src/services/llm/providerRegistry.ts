@@ -7,14 +7,14 @@ dotenv.config();
 
 import GeminiProvider from './geminiProvider';
 import GroqProvider from './groqProvider';
-import OpenAIProvider from './thirdProvider';
+import MistralProvider from './thirdProvider';
 import { Provider, LLMResponse } from './llmTypes';
 import logger from '../../utils/logger';
 
 export interface ModelInfo {
   provider: Provider;
   modelName: string;
-  providerName: 'gemini' | 'groq' | 'openai';
+  providerName: 'gemini' | 'groq' | 'mistral' | 'openai';
   capabilities: string[];
   contextWindow: number; // token limit
   pricing: { input: number; output: number }; // $ per 1M tokens
@@ -75,12 +75,12 @@ const registry: ModelInfo[] = [
     speed: 'balanced',
   },
   {
-    provider: new OpenAIProvider('gpt-4o-mini'),
-    modelName: 'gpt-4o-mini',
-    providerName: 'openai',
-    capabilities: ['high-quality', 'reasoning', 'analytical'],
+    provider: new MistralProvider('ministral-8b-latest'),
+    modelName: 'ministral-8b-latest',
+    providerName: 'mistral',
+    capabilities: ['high-quality', 'reasoning', 'analytical', 'compact'],
     contextWindow: 128000,
-    pricing: { input: 0.15, output: 0.60 },
+    pricing: { input: 0.10, output: 0.10 },
     speed: 'high',
   },
 ];
@@ -149,12 +149,12 @@ export function classifyTaskAndSelectModel(criteria: RoutingCriteria): TaskAnaly
   // D. Complex Multi-Step Reasoning, Analytical Comparison & Logic
   const reasoningKeywords = /\b(analyze|analysis|compare|contrast|evaluate|pros and cons|logic|reasoning|deduce|trade-offs|strategy|decision|dilemma|critique|philosophical)\b/i;
   if (reasoningKeywords.test(prompt)) {
-    const openai = registry.find(m => m.providerName === 'openai');
+    const mistral = registry.find(m => m.providerName === 'mistral') || registry.find(m => m.providerName === 'openai');
     return {
       category: 'reasoning',
       routingMode: 'auto',
-      routingReason: 'Task Classified: Complex Multi-Step Reasoning & Comparative Analysis. Primary target: OpenAI (GPT-4o-mini).',
-      modelInfo: openai || registry[0],
+      routingReason: 'Task Classified: Complex Multi-Step Reasoning & Comparative Analysis. Primary target: Mistral AI (ministral-8b-latest).',
+      modelInfo: mistral || registry[0],
     };
   }
 
@@ -400,36 +400,36 @@ export const checkProvidersHealth = async () => {
     error: groqError || undefined,
   });
 
-  // 3. OpenAI
-  const hasOpenAIKey = !!process.env.OPENAI_API_KEY;
-  let openaiStatus: 'online' | 'degraded' | 'offline' = 'offline';
-  let openaiLatency = 0;
-  let openaiError = '';
-  if (hasOpenAIKey) {
+  // 3. Mistral AI
+  const hasMistralKey = !!process.env.MISTRAL_API_KEY || !!process.env.OPENAI_API_KEY;
+  let mistralStatus: 'online' | 'degraded' | 'offline' = 'offline';
+  let mistralLatency = 0;
+  let mistralError = '';
+  if (hasMistralKey) {
     const t0 = Date.now();
     try {
-      const openai = new OpenAIProvider('gpt-4o-mini');
-      const ok = await openai.healthCheck();
-      openaiLatency = Date.now() - t0;
-      openaiStatus = ok ? 'online' : 'degraded';
+      const mistral = new MistralProvider('ministral-8b-latest');
+      const ok = await mistral.healthCheck();
+      mistralLatency = Date.now() - t0;
+      mistralStatus = ok ? 'online' : 'degraded';
     } catch (e: any) {
-      openaiLatency = Date.now() - t0;
-      openaiStatus = e.status === 429 || (e.message && e.message.includes('429')) ? 'degraded' : 'offline';
-      openaiError = e.status === 429 ? 'Quota exhausted (fallback active)' : (e.message || 'Connection error');
+      mistralLatency = Date.now() - t0;
+      mistralStatus = e.status === 429 || (e.message && e.message.includes('429')) ? 'degraded' : 'offline';
+      mistralError = e.status === 429 ? 'Rate limit / quota active (fallback active)' : (e.message || 'Connection error');
     }
   }
 
   results.push({
-    name: 'OpenAI',
-    providerKey: 'openai',
-    configured: hasOpenAIKey,
-    status: openaiStatus,
-    latencyMs: openaiLatency,
-    activeModel: 'gpt-4o-mini',
-    models: ['gpt-4o-mini', 'text-embedding-3-small'],
+    name: 'Mistral AI',
+    providerKey: 'mistral',
+    configured: hasMistralKey,
+    status: mistralStatus,
+    latencyMs: mistralLatency,
+    activeModel: 'ministral-8b-latest',
+    models: ['ministral-8b-latest', 'mistral-tiny', 'codestral-latest'],
     contextWindow: '128,000 tokens',
-    pricing: '$0.15 / 1M input',
-    error: openaiError || undefined,
+    pricing: '$0.10 / 1M input',
+    error: mistralError || undefined,
   });
 
   return results;
