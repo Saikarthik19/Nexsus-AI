@@ -45,8 +45,8 @@ const Register: React.FC = () => {
           <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-blue-500 flex items-center justify-center shadow-xl shadow-indigo-600/30 mb-3">
             <Bot className="w-6 h-6 text-white" />
           </div>
-          <h2 className="text-2xl font-bold tracking-tight text-white">Create NexusAI Account</h2>
-          <p className="text-xs text-slate-400 mt-1">Multi-Model Enterprise AI Workspace</p>
+          <h2 className="text-2xl font-bold tracking-tight text-white">Create OptiModel AI Account</h2>
+          <p className="text-xs text-slate-400 mt-1">Multi-Model Auto-Routing & Cost Detection Workspace</p>
         </div>
 
         {error && (

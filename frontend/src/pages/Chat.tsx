@@ -291,7 +291,7 @@ const Chat: React.FC = () => {
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center shadow-xl shadow-indigo-500/20 mb-4">
                   <Sparkles className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">NexusAI Multi-Model Assistant</h3>
+                <h3 className="text-xl font-bold text-white mb-2">OptiModel AI Assistant</h3>
                 <p className="text-xs text-slate-400 mb-6 leading-relaxed">
                   Select a provider model or leave on Auto for dynamic task-aware routing. Check "RAG Document Knowledge"
                   to ground answers in your uploaded PDFs.
@@ -300,7 +300,7 @@ const Chat: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full text-left">
                   <button
                     onClick={() => {
-                      setInputContent('Summarize the multi-model architecture of NexusAI.');
+                      setInputContent('Summarize the multi-model architecture of OptiModel AI.');
                     }}
                     className="p-3 bg-slate-900/60 hover:bg-slate-800 border border-slate-800 rounded-xl text-xs text-slate-300 transition"
                   >
@@ -443,7 +443,7 @@ const Chat: React.FC = () => {
                 </div>
                 <div className="px-4 py-3 bg-[#0f172a] border border-slate-800 rounded-2xl text-xs text-slate-400 flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-indigo-400 animate-ping" />
-                  <span>NexusAI is orchestrating response...</span>
+                  <span>OptiModel AI is orchestrating response...</span>
                 </div>
               </div>
             )}
@@ -465,7 +465,7 @@ const Chat: React.FC = () => {
                       handleSendMessage();
                     }
                   }}
-                  placeholder="Ask NexusAI anything... (Shift+Enter for newline)"
+                  placeholder="Ask OptiModel AI anything... (Shift+Enter for newline)"
                   className="w-full bg-transparent text-xs text-slate-100 placeholder-slate-500 resize-none focus:outline-none"
                 />
               </div>

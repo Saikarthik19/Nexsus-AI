@@ -55,7 +55,7 @@ const start = async () => {
   await connectDB();
   const port = process.env.PORT || 5001;
   app.listen(port, () => {
-    logger.info(`🚀 NexusAI Server listening on port ${port}`);
+    logger.info(`🚀 OptiModel AI Server listening on port ${port}`);
   });
 };
 

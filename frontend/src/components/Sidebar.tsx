@@ -56,10 +56,10 @@ export const Sidebar: React.FC<SidebarProps> = () => {
           {!collapsed && (
             <div className="flex flex-col">
               <span className="font-bold text-lg tracking-tight bg-gradient-to-r from-white via-indigo-100 to-indigo-300 bg-clip-text text-transparent">
-                NexusAI
+                OptiModel AI
               </span>
               <span className="text-[10px] text-indigo-400 font-medium tracking-wider uppercase">
-                Enterprise Platform
+                Auto-Routing & Cost FinOps
               </span>
             </div>
           )}

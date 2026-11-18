@@ -39,7 +39,7 @@ const getDefaultPayload = async (scenarioId: number, userId: string) => {
     case 7:
       return { query: 'Provide a brief greeting.' };
     case 8:
-      return { largeText: 'NexusAI evaluation document context section. '.repeat(40) };
+      return { largeText: 'OptiModel AI evaluation document context section. '.repeat(40) };
     case 9:
       return { query: 'Hello world', budgetUSD: 0.05 };
     case 10: {

@@ -31,7 +31,7 @@ const Login: React.FC = () => {
   };
 
   const handleDemoFill = () => {
-    setEmail('demo@nexusai.io');
+    setEmail('demo@optimodel.ai');
     setPassword('Password123!');
   };
 
@@ -47,8 +47,8 @@ const Login: React.FC = () => {
           <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-blue-500 flex items-center justify-center shadow-xl shadow-indigo-600/30 mb-3">
             <Bot className="w-6 h-6 text-white" />
           </div>
-          <h2 className="text-2xl font-bold tracking-tight text-white">NexusAI Sign In</h2>
-          <p className="text-xs text-slate-400 mt-1">Multi-Model Cost-Aware AI Assistant • Enterprise Edition</p>
+          <h2 className="text-2xl font-bold tracking-tight text-white">OptiModel AI Sign In</h2>
+          <p className="text-xs text-slate-400 mt-1">Multi-Model Auto-Routing & Cost Detection Platform</p>
         </div>
 
         {error && (
@@ -113,7 +113,7 @@ const Login: React.FC = () => {
             className="w-full py-2 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-indigo-300 rounded-xl text-xs font-semibold transition flex items-center justify-center gap-2"
           >
             <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-            <span>Fill Demo Credentials (demo@nexusai.io)</span>
+            <span>Fill Demo Credentials (demo@optimodel.ai)</span>
           </button>
         </div>
 

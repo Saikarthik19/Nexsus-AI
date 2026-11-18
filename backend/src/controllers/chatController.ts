@@ -161,7 +161,7 @@ export const postMessage = async (req: Request, res: Response, next: NextFunctio
             .map((c, i) => `[Source ${i + 1} - ${c.docName} (Page ${c.pageNumber || 1})]:\n${c.text}`)
             .join('\n\n');
 
-          promptToRun = `You are NexusAI, an intelligent knowledge assistant. Answer the user question accurately based on the retrieved document context below.\nGround your response strictly on this context. Cite the sources where appropriate. If the context does not contain the answer, state that clearly.\n\n=== RETRIEVED DOCUMENT CONTEXT ===\n${contextBlock}\n===================================\n\nUser Question: ${content}`;
+          promptToRun = `You are OptiModel AI, an intelligent multi-model knowledge assistant. Answer the user question accurately based on the retrieved document context below.\nGround your response strictly on this context. Cite the sources where appropriate. If the context does not contain the answer, state that clearly.\n\n=== RETRIEVED DOCUMENT CONTEXT ===\n${contextBlock}\n===================================\n\nUser Question: ${content}`;
         }
       } catch (ragErr: any) {
         logger.warn('RAG retrieval failed: ' + ragErr.message);

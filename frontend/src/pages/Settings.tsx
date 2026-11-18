@@ -33,11 +33,11 @@ const Settings: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
               <div className="p-3 bg-slate-900/60 rounded-xl border border-slate-800">
                 <span className="text-slate-400">Full Name:</span>
-                <p className="font-semibold text-white mt-1">{auth?.user?.name || 'Nexus Admin'}</p>
+                <p className="font-semibold text-white mt-1">{auth?.user?.name || 'OptiModel Admin'}</p>
               </div>
               <div className="p-3 bg-slate-900/60 rounded-xl border border-slate-800">
                 <span className="text-slate-400">Email Address:</span>
-                <p className="font-semibold text-white mt-1">{auth?.user?.email || 'demo@nexusai.io'}</p>
+                <p className="font-semibold text-white mt-1">{auth?.user?.email || 'demo@optimodel.ai'}</p>
               </div>
               <div className="p-3 bg-slate-900/60 rounded-xl border border-slate-800">
                 <span className="text-slate-400">Security Clearance:</span>
@@ -94,7 +94,7 @@ const Settings: React.FC = () => {
             <div className="space-y-2 text-xs text-slate-300">
               <div className="flex justify-between p-2.5 bg-slate-900/40 rounded-lg">
                 <span className="text-slate-400">Platform Architecture:</span>
-                <span className="font-semibold text-white">NexusAI Enterprise Multi-Model Intelligence Platform</span>
+                <span className="font-semibold text-white">OptiModel AI – Multi-Model Auto-Routing & Cost Detection Platform</span>
               </div>
               <div className="flex justify-between p-2.5 bg-slate-900/40 rounded-lg">
                 <span className="text-slate-400">Frontend Stack:</span>

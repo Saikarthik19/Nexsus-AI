@@ -1,7 +1,7 @@
-# NexusAI – Intelligent Multi-Model Cost-Aware AI Platform
+# OptiModel AI – Intelligent Multi-Model Auto-Routing & Cost Detection Platform
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Platform-NexusAI-6366f1?style=for-the-badge&logo=openai&logoColor=white" alt="NexusAI" />
+  <img src="https://img.shields.io/badge/Platform-OptiModel_AI-6366f1?style=for-the-badge&logo=openai&logoColor=white" alt="OptiModel AI" />
   <img src="https://img.shields.io/badge/TypeScript-5.4-3178c6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
   <img src="https://img.shields.io/badge/React-18-61dafb?style=for-the-badge&logo=react&logoColor=black" alt="React 18" />
   <img src="https://img.shields.io/badge/Vite-5.4-646cff?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
@@ -15,23 +15,23 @@
 
 ## 📌 Executive Overview
 
-**NexusAI** is an enterprise-ready, cost-optimized AI orchestration platform engineered to dynamically route natural language requests across multiple state-of-the-art Large Language Model (LLM) providers. By combining semantic task classification, context window requirements, real-time cost-per-token metrics, and automated fault-tolerant fallback, NexusAI delivers maximum response accuracy and ultra-low latency while slashing operational inference costs.
+**OptiModel AI** is an enterprise-ready, cost-optimized AI orchestration platform engineered to dynamically auto-route natural language requests across multiple state-of-the-art Large Language Model (LLM) providers with real-time cost detection. By combining semantic task classification, context window requirements, real-time cost-per-token detection metrics, and automated fault-tolerant fallback, OptiModel AI delivers maximum response accuracy and ultra-low latency while slashing operational inference costs.
 
-The platform provides a unified interface incorporating **dynamic multi-model routing** (Google Gemini, Groq Cloud, OpenAI), **Retrieval-Augmented Generation (RAG)** over uploaded knowledge documents, **prompt injection security guardrails**, **granular token/cost FinOps telemetry**, and an **integrated 10-scenario evaluation benchmark suite**.
+The platform provides a unified interface incorporating **dynamic multi-model auto-routing** (Google Gemini, Groq Cloud, Mistral AI), **Retrieval-Augmented Generation (RAG)** over uploaded knowledge documents, **prompt injection security guardrails**, **granular token/cost FinOps telemetry**, and an **integrated 10-scenario evaluation benchmark suite**.
 
 ---
 
 ## 🚀 Key Architecture & Capabilities
 
-### 1. ⚡ Dynamic Task-Aware Multi-Model Routing
-NexusAI automatically classifies incoming tasks and dispatches prompts to the optimal LLM provider rather than relying on a single static model:
+### 1. ⚡ Dynamic Task-Aware Multi-Model Auto-Routing
+OptiModel AI automatically classifies incoming tasks and dispatches prompts to the optimal LLM provider rather than relying on a single static model:
 * **Groq Cloud (`qwen/qwen3.8-27b`)**: Selected for technical code generation, bash scripting, and fast conversational interactions delivering sub-400ms ultra-low inference latency.
 * **Google Gemini (`gemini-3.5-flash-lite`)**: Selected for long-context synthesis, creative prose, and document intelligence leveraging its 1,000,000-token context window and cost efficiency.
 * **Mistral AI (`ministral-8b-latest`)**: Selected for complex multi-step reasoning, architectural trade-offs, and symbolic logic.
 * **Manual Override**: Users can pin any session or prompt to a specific provider model at any time.
 
 ### 2. 🛡️ Fault-Tolerant Resilience & Graceful Fallback
-* When primary providers encounter HTTP 429 quota limits, balance exhaustion, rate limits, or network timeouts, the NexusAI Fallback Engine instantly intercepts the error.
+* When primary providers encounter HTTP 429 quota limits, balance exhaustion, rate limits, or network timeouts, the OptiModel AI Fallback Engine instantly intercepts the error.
 * Requests automatically failover to secondary and tertiary providers seamlessly without dropping the user session.
 * Complete fallback telemetry (trigger reason, original model, fallback model, latency impact) is recorded and surfaced in the UI.
 
@@ -69,8 +69,8 @@ Includes an in-browser Evaluation Center capable of executing automated test run
 
 ```mermaid
 flowchart TD
-    User([User / Browser]) <-->|React + Vite SPA| Frontend[NexusAI Frontend]
-    Frontend <-->|REST API + JWT| Backend[NexusAI Express API Server]
+    User([User / Browser]) <-->|React + Vite SPA| Frontend[OptiModel AI Frontend]
+    Frontend <-->|REST API + JWT| Backend[OptiModel AI Express API Server]
     
     subgraph Security_and_Context [Stage 1: Context & Security]
         Backend --> InjectionCheck{Prompt Injection Check}
@@ -370,5 +370,5 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 ---
 
 <p align="center">
-  <b>NexusAI</b> — Engineered for Intelligent, Cost-Aware Multi-Model AI Orchestration.
+  <b>OptiModel AI</b> — Engineered for Intelligent Multi-Model Auto-Routing & Cost Detection.
 </p>
